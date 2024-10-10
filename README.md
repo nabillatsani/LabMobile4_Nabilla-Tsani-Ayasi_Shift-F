@@ -53,6 +53,7 @@ Proses melihat produk pada kode ini terjadi secara singkat sebagai berikut:
 3. Tambah Produk: Pengguna juga dapat menambahkan produk baru dengan menekan ikon tambah (+) pada bagian atas kanan layar. Ini akan membawa pengguna ke halaman form untuk menambah produk baru.
 
 Proses ini memberikan pengalaman melihat daftar produk dan detail setiap produk dengan navigasi yang jelas dan mudah.
+
 ![Screenshot 2024-10-02 225625](https://github.com/user-attachments/assets/c72714f7-d0eb-4ed7-8ca0-8ae87fbfbf71)
 
 # Add Produk
@@ -99,3 +100,37 @@ Proses ini memastikan bahwa perubahan pada data produk disimpan dengan baik dan 
 
 ![Screenshot 2024-10-02 225716](https://github.com/user-attachments/assets/ae998614-9057-45ef-bff4-70124b478a2c)
 
+# Delete Produk
+Proses penghapusan produk berlangsung sebagai berikut:
+
+1. Akses Tombol Hapus: Pada halaman detail produk, terdapat tombol "DELETE". Saat pengguna menekan tombol tersebut, aplikasi akan menampilkan kotak dialog konfirmasi yang menanyakan apakah pengguna yakin ingin menghapus produk tersebut.
+
+2. Konfirmasi Penghapusan: Jika pengguna memilih untuk melanjutkan dan menekan tombol "Ya", aplikasi akan memanggil metode `deleteProduk()` dari `ProdukBloc`. Metode ini akan mengirim permintaan ke API untuk menghapus produk berdasarkan ID yang dipilih.
+
+3. Tindak Lanjut Setelah Penghapusan: Jika proses penghapusan berhasil, pengguna akan diarahkan kembali ke halaman daftar produk (`ProdukPage`), dan produk yang telah dihapus tidak lagi ditampilkan dalam daftar.
+
+Proses ini memastikan pengguna bisa mengonfirmasi sebelum menghapus, dan produk yang dihapus dihilangkan dari daftar secara real-time.
+
+# Logout
+Proses logout berlangsung dengan langkah-langkah berikut:
+
+1. Akses Menu Logout: Pengguna dapat menemukan opsi logout di menu samping (drawer) aplikasi. Ketika pengguna menekan opsi ini, fungsi `logout()` dari `LogoutBloc` dipanggil.
+
+2. Hapus Informasi Pengguna: Fungsi `logout()` akan menghapus semua informasi pengguna yang tersimpan menggunakan metode `UserInfo().logout()`. Ini memastikan bahwa sesi pengguna terputus.
+
+3. Navigasi ke Halaman Login: Setelah logout berhasil, pengguna akan diarahkan ke halaman login (`LoginPage`) dengan menggunakan `Navigator.of(context).pushAndRemoveUntil`. Ini memastikan pengguna tidak bisa kembali ke halaman sebelumnya tanpa login ulang.
+
+Proses ini memastikan pengguna keluar dari aplikasi dengan aman, dan harus login kembali untuk mengakses fitur-fitur selanjutnya.
+
+# Kesimpulan
+Kesimpulan dari proses-proses yang ada pada program ini adalah:
+
+1. Manajemen Produk: Aplikasi ini memungkinkan pengguna untuk melihat daftar produk, menambahkan produk baru, mengedit produk yang sudah ada, serta menghapus produk. Pengelolaan ini diatur melalui beberapa kelas, seperti `ProdukBloc` yang mengelola interaksi API untuk mengambil, menambah, memperbarui, dan menghapus data produk, serta halaman-halaman terkait seperti `ProdukPage`, `ProdukForm`, dan `ProdukDetail` yang bertanggung jawab untuk antarmuka pengguna.
+
+2. Logout: Fitur logout memungkinkan pengguna untuk keluar dari aplikasi. Proses ini menghapus informasi sesi pengguna yang disimpan, dan mengarahkan pengguna kembali ke halaman login, memastikan keamanan akses data dan privasi.
+
+3. Interaksi dengan Backend: Program ini berkomunikasi dengan backend melalui API yaitu Postman untuk melakukan operasi CRUD (Create, Read, Update, Delete) pada data produk. Setiap perubahan yang dilakukan pada produk, seperti penambahan, pengeditan, atau penghapusan, langsung diteruskan ke server melalui permintaan HTTP.
+
+4. Navigasi yang Terstruktur: Aplikasi ini menerapkan navigasi yang mulus, dengan transisi antar halaman yang mudah dipahami oleh pengguna. Pengguna dapat menambahkan, mengedit, atau menghapus produk dari daftar, serta logout dengan langkah-langkah yang sederhana.
+
+Secara keseluruhan, program ini mengimplementasikan fungsionalitas pengelolaan data produk dan manajemen sesi pengguna dengan struktur yang rapi dan user-friendly.
