@@ -2,7 +2,7 @@ class Produk {
   int? id;
   String? kodeProduk;
   String? namaProduk;
-  int? hargaProduk;
+  var hargaProduk;
 
   Produk({this.id, this.kodeProduk, this.namaProduk, this.hargaProduk});
 
